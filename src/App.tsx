@@ -50,7 +50,7 @@ function App() {
       <div className="h-3/5 flex justify-around items-center">
         <div className="flex gap-12">
           {products.map((product) => (
-            <Product product={product} />
+            <Product key={product.id} name={product.name} id={product.id} description={product.description} image={product.image} />
           ))}
         </div>
       </div>

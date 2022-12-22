@@ -1,6 +1,6 @@
-import { useState } from "react";
 import useModal from "../functions/UseModal";
-import Modal from "./Modal";
+import Modal from "./Modal/Modal";
+import { useEffect, useState } from 'react';
 
 interface ProductType {
     id: number;
@@ -18,10 +18,11 @@ export default function Product({ id, name, description, image }: ProductType) {
                 <div className="w-[180px] h-[180px] bg-white rounded-full shadow-lg"></div>
                 <h3 className='mt-5'>{name}</h3>
             </button>
-
+            {isOpen && (
             <Modal isOpen={isOpen} toggle={toggle}>
-                {name}
+
             </Modal>
+            )}
         </>
     );
 }
