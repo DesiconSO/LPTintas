@@ -101,6 +101,7 @@ class Product extends React.Component<CategoryItem, Props, State> {
                                     <ModalItem key={id} name={name} meta_description={meta_description} url={url} images={images} />
                                 ))
                             )}
+
                         </div>
                     </div>
 
