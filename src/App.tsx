@@ -58,7 +58,7 @@ function App() {
 
       <div className="lg:min-h-3/5 flex justify-center items-center flex-col w-full px-20 bg-slate-50">
         <div className='w-full text-center mt-12'>
-          <h1 className='text-3xl text-orange-500'>Categorias de Tintas</h1>
+          <h1 className='text-3xl text-orange-500'>Dúvida sobre Tinta Spray</h1>
           <p className='mt-8 text-slate-800'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, ab quidem nihil nesciunt voluptatem cupiditate voluptates facere quia eaque quibusdam iure saepe illo laborum voluptatibus, culpa odit beatae consequatur. Aliquid.
             Inventore dolor iste doloremque dolorum commodi ipsa atque minima velit, consequuntur ad maiores nostrum neque expedita esse totam recusandae facilis accusantium debitis at sint? Modi officiis eaque ipsum consectetur omnis.
             Reiciendis hic quaerat placeat facilis iure, amet ducimus autem sed asperiores illum doloribus iste error voluptates eos assumenda accusamus soluta nihil quam? Accusantium expedita ratione cum dolorem excepturi rem harum?</p>

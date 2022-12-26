@@ -76,7 +76,7 @@ class Product extends React.Component<CategoryItem, Props, State> {
 
                 <button className="group hover:scale-105 duration-150 w-1/6 flex justify-center flex-col text-center items-center mt-8 lg:mt-0" onClick={this.showModal}>
                     <div className="w-[180px] h-[180px] bg-white rounded-full shadow-lg overflow-hidden flex justify-center items-center">
-                        <img src={this.props.image} alt={this.props.title} className="w-auto h-full z-1" />
+                        <img src={this.props.image} alt={this.props.title} className="w-[180px] h-[180px] z-1" />
                     </div>
                     <h2 className='group-hover:animate-bounce mt-5 text-center w-full p-3'><span className='border-2 border-transparent border-b-orange-300 p-2.5 group-hover:border-b-orange-500 duration-150'>{this.props.title}</span></h2>
                 </button>
