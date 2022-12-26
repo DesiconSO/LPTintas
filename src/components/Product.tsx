@@ -12,14 +12,21 @@ interface State {
     title: string;
 }
 
-interface ModalItemType {
+interface CategoryItem {
     category: string;
     title: string;
+    image: string;
 }
 
-class Product extends React.Component<ModalItemType, Props, State> {
-    search = this.props.category;
+interface ModalItemType {
+    id: string
+    meta_description: string;
+    name: string;
+    url: string;
+    images: [];
+}
 
+class Product extends React.Component<CategoryItem, Props, State> {
     state = {
         modalVisible: false,
         items: [],
@@ -46,11 +53,13 @@ class Product extends React.Component<ModalItemType, Props, State> {
                 }
             };
 
-            const response = await axios.get('https://api.dooca.store/products  ', config);
+            const response = await axios.get('https://api.dooca.store/products?category=300645', config);
 
-            const data = await response.data
-            // this.setState({ items: response, loading: false });
+            const data = await response.data.data
+
+            this.setState({ items: data, loading: false });
             console.log(data);
+
         } catch (error) {
             console.error(error);
             this.setState({ loading: false });
@@ -60,23 +69,31 @@ class Product extends React.Component<ModalItemType, Props, State> {
     render() {
         return (
             <>
-                <button className="text-center hover:scale-105 duration-150 " onClick={this.showModal}>
-                    <div className="w-[180px] h-[180px] bg-white rounded-full shadow-lg bg-cyan-600"></div>
-                    <h3 className='mt-5'>{this.props.category}</h3>
+                <button className="group hover:scale-105 duration-150 w-1/6 flex justify-center flex-col text-center items-center mt-8 lg:mt-0" onClick={this.showModal}>
+                    <div className="w-[180px] h-[180px] bg-white rounded-full shadow-lg overflow-hidden flex justify-center items-center">
+                        <img src={this.props.image} alt={this.props.title} className="w-auto h-full z-1" />
+                    </div>
+                    <h2 className='group-hover:animate-bounce mt-5 text-center w-full p-3'><span className='border-2 border-transparent border-b-orange-300 p-2.5 group-hover:border-b-orange-500 duration-150'>{this.props.title}</span></h2>
                 </button>
                 <Modal
                     title="Items"
                     open={this.state.modalVisible}
                     onOk={this.hideModal}
+                    centered
+                    width={1000}
+                    style={{ top: 30 }}
                     onCancel={this.hideModal}
                 >
                     <div className="flex justify-center">
+
                         <div className='flex flex-wrap w-full'>
                             {this.state.loading ? (
-                                <Spin />
+                                <div className="flex justify-center items-center w-full h-full py-10">
+                                    <Spin />
+                                </div>
                             ) : (
-                                this.state.items.map(({ category, title }: ModalItemType) => (
-                                    <ModalItem category={category} title={title} />
+                                this.state.items.map(({ id, name, meta_description, url, images }: ModalItemType) => (
+                                    <ModalItem key={id} name={name} meta_description={meta_description} url={url} images={images} />
                                 ))
                             )}
                         </div>
