@@ -23,7 +23,7 @@ interface ModalItemType {
     meta_description: string;
     name: string;
     url: string;
-    images: [];
+    images: string;
 }
 
 class Product extends React.Component<CategoryItem, Props, State> {
@@ -57,9 +57,13 @@ class Product extends React.Component<CategoryItem, Props, State> {
 
             const data = await response.data.data
 
-            this.setState({ items: data, loading: false });
-            console.log(data);
+            if (data) {
+                data.map((item: any) => {
+                    item.images = item.images[0].src
+                })
+            }
 
+            this.setState({ items: data, loading: false });
         } catch (error) {
             console.error(error);
             this.setState({ loading: false });
@@ -93,6 +97,7 @@ class Product extends React.Component<CategoryItem, Props, State> {
                                 </div>
                             ) : (
                                 this.state.items.map(({ id, name, meta_description, url, images }: ModalItemType) => (
+
                                     <ModalItem key={id} name={name} meta_description={meta_description} url={url} images={images} />
                                 ))
                             )}
